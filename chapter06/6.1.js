@@ -1,12 +1,8 @@
 const printOwing = (invoice) => {
-  let outstanding = 0;
-
   printBanner();
 
   // 미해결 채무(outstanding)를 계산한다.
-  for (const o of invoice.orders) {
-    outstanding += o.amount;
-  }
+  const outstanding = calulateOustanding(invoice);
 
   // 마감일(dueDate)을 기록한다.
   recordDueDate(invoice);
@@ -34,4 +30,13 @@ const recordDueDate = (invoice) => {
     today.getMonth(),
     today.getDate() + 30
   );
+};
+
+const calulateOustanding = (invoice) => {
+  let result = 0;
+  for (const o of invoice.orders) {
+    result += o.amount;
+  }
+
+  return result;
 };

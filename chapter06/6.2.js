@@ -1,7 +1,3 @@
 const rating = (aDriver) => {
-  return moreThanFiveLateDeliveries(aDriver) ? 2 : 1;
-};
-
-const moreThanFiveLateDliveries = (aDriver) => {
-  return aDriver.numberOfLateDeiveries > 5;
+  return aDriver.numberOfLateDeiveries > 5 ? 2 : 1;
 };

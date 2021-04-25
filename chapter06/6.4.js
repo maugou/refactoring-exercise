@@ -1,4 +1,3 @@
 const printValue = () => {
-  let basePrice = anOrder.basePrice;
-  console.log(basePrice > 1000) 
+  console.log(anOrder.basePrice > 1000) 
 }

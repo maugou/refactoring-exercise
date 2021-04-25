@@ -10,12 +10,12 @@ const newAddReservation = (customer, isPriority) => {
 };
 
 // 6.5-4 기초식
-const inNewEngland = (aCustomer) => {
-  return newInNewEngland(aCustomer.address.state)
+const inNewEngland = (stateCode) => {
+  return ["MA", "CT", "ME", "VT", "NH", "RI"].includes(stateCode);
 };
 
-const newInNewEngland = (stateCode) =>  {
-  return ["MA", "CT", "ME", "VT", "NH", "RI"].includes(stateCode);
-}
+// const newInNewEngland = (stateCode) =>  {
+//   return ["MA", "CT", "ME", "VT", "NH", "RI"].includes(stateCode);
+// }
 
-const newEnglanders = someCustomers.filter((c) => newInNewEngland(c.address.state));
+const newEnglanders = someCustomers.filter((c) => inNewEngland(c.address.state));

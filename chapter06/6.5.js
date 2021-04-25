@@ -1,5 +1,10 @@
-let reservations = []
+let reservations = [];
 
 const addReservation = (customer) => {
-  reservations.push(customer)
-}
+  newAddReservation(customer, false);
+};
+
+const newAddReservation = (customer, isPriority) => {
+  console.assert(isPriority === true || isPriority === false);
+  reservations.push(customer);
+};

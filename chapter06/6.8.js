@@ -10,8 +10,10 @@ const station = {
 };
 
 // 정상 범위를 벗어난 측정값을 찾는 함수
-const readingOUsideRange = (station, min, max, range) => {
-  return station.readings.filter((r) => r.temp < min || r.temp > max);
+const readingOUsideRange = (station, range) => {
+  return station.readings.filter(
+    (r) => r.temp < range.min || r.temp > range.max
+  );
 };
 
 // 호출문
@@ -20,12 +22,7 @@ const range = new NumberRange(
   operatingPlan.temperatureCeiling
 );
 
-readingOUsideRange(
-  station,
-  operatingPlan.temperatureFloor,
-  operatingPlan.temperatureCeiling,
-  range
-);
+readingOUsideRange(station, range);
 class NumberRange {
   constructor(min, max) {
     this._data = { min, max };

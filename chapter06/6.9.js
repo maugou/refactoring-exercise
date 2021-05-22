@@ -20,21 +20,27 @@ class Reading {
   get year() {
     return this._year;
   }
+
+  // 메서드명 변경 (통일)
+  get baseCharge() {
+    return baseRate(this.month, this.year) * this.quantity;
+  }
 }
 
 // 클라이언트 1
-const aReading = acquireReading();
-const baseCharge = baserate(aReading.month, aReading.year) * aReading.quantity;
+const rawReading = acquireReading();
+const aReading = new Reading(rowReading);
+const baseCharge = aReading.baseCharge;
 
 // 클라이언트 2
-const aReading = acquireReading();
-const baseCharge = baserate(aReading.month, aReading.year) * aReading.quantity;
-const taxableCharge = Math.max(0, base - taxThreshold(aReading.year));
+const rawReading = acquireReading();
+const aReading = new Reading(rowReading);
+const taxableCharge = Math.max(
+  0,
+  aReading.baseCharge - taxThreshold(aReading.year)
+);
 
 // 클라이언트 3
-const aReading = acquireReading();
-const basicChargeAmount = calculateBaseCharge(aReading);
-
-const calculateBaseCharge = (aReading) => {
-  return baseRate(aReading.month, aReading.year) * aReading.quantity;
-};
+const rawReading = acquireReading();
+const aReading = new Reading(rowReading);
+const basicChargeAmount = aReading.baseCharge;

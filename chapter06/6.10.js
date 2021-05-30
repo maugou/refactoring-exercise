@@ -6,9 +6,9 @@ const aReading = enrichReading(rawReading);
 const baseCharge = aReading.baseCharge;
 
 // 클라이언트 2
-const aReading = acquireReading();
-const base = baseRate(aReading.month, aReading.year) * aReading.quantity;
-const taxableCharge = Math.max(0, base - taxThreshold(aReading.year));
+const rawReading = acquireReading();
+const aReading = enrichReading(rawReading);
+const taxableCharge = aReading.taxableCharge;
 
 // 클라이언트 3
 const rawReading = acquireReading();
@@ -24,6 +24,9 @@ const enrichReading = (original) => {
   // cloneDeep()는 lodash에서 제공해주는 함수
   const result = cloneDeep(original);
   result.baseCharge = calculateBaseCharge(result);
-
+  result.taxableCharge = Math.max(
+    0,
+    result.baseCharge - taxThreshold(result.year)
+  );
   return result;
 };

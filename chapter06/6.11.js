@@ -5,19 +5,21 @@ const priceOrder = (product, quantity, shippingMethod) => {
     product.basePrice *
     product.discountRate;
 
-  const price = applyShipping(basePrice, shippingMethod, quantity, discount);
+  // 가격계산과 배송비계산 사이에 주고 받는 데이터
+  const priceData = { basePrice, quantity, discount };
+  const price = applyShipping(priceData, shippingMethod);
 
   return price;
 };
 
-const applyShipping = (basePrice, shippingMethod, quantity, discount) => {
+const applyShipping = (priceData, shippingMethod) => {
   const shippingPerCase =
-    basePrice > shippingMethod.discountThreshold
+    priceData.basePrice > shippingMethod.discountThreshold
       ? shippingMethod.discountedFee
       : shippingMethod.feePerCase;
-  const shippingCost = quantity * shippingPerCase;
+  const shippingCost = priceData.quantity * shippingPerCase;
 
-  const price = basePrice - discount + shippingCost;
+  const price = priceData.basePrice - priceData.discount + shippingCost;
 
   return price;
 };

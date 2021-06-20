@@ -26,7 +26,11 @@ const getCustomerData = () => {
 };
 
 const getRawDataOfCustomers = () => {
-  return customerData._data;
+  return customerData.rawData;
+};
+
+const setUsage = (customerID, year, month, amount) => {
+  getRawDataOfCustomers()[customerID].usages[year][month] = amount;
 };
 
 const setRawDataOfCustomears = (arg) => {
@@ -36,6 +40,15 @@ const setRawDataOfCustomears = (arg) => {
 class CustomerData {
   constructor(data) {
     this._data = data;
+  }
+
+  setUsage(customerID, year, month, amount) {
+    this._data[customerID].usages[year][month] = amount;
+  }
+
+  get rawData() {
+    // cloneDeep 은 lodash 제공 함수
+    return _.cloneDeep(this._data);
   }
 }
 // 7.1-1

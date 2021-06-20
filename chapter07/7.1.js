@@ -1,4 +1,4 @@
-const customer = {
+const customerData = new CustomerData({
   1920: {
     name: "마틴 파울러",
     id: "1920",
@@ -19,16 +19,25 @@ const customer = {
       id: "38673",
     },
   },
+});
+
+const getCustomerData = () => {
+  return customerData;
 };
 
 const getRawDataOfCustomers = () => {
-  return customer;
+  return customerData._data;
 };
 
 const setRawDataOfCustomears = (arg) => {
-  customer = arg;
+  customerData = new CustomerData(arg);
 };
 
+class CustomerData {
+  constructor(data) {
+    this._data = data;
+  }
+}
 // 7.1-1
 const organization = new Organization({
   name: "애크미 구스베리",

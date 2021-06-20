@@ -37,6 +37,14 @@ const setRawDataOfCustomears = (arg) => {
   customerData = new CustomerData(arg);
 };
 
+// 읽기
+const compareUsage = (customerID, laterYear, month) => {
+  const later = getCustomerData().usage(customerID, laterYear, month);
+  const earlier = getCustomerData().usage(customerID, laterYear - 1, month);
+
+  return { laterAmount: later, chagne: later - earlier };
+};
+
 class CustomerData {
   constructor(data) {
     this._data = data;
@@ -49,6 +57,10 @@ class CustomerData {
   get rawData() {
     // cloneDeep 은 lodash 제공 함수
     return _.cloneDeep(this._data);
+  }
+
+  usage(customerID, year, month) {
+    return this._data[customerID].usages[year][month];
   }
 }
 // 7.1-1

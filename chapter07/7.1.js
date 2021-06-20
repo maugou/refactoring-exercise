@@ -21,6 +21,14 @@ const customer = {
   },
 };
 
+const getRawDataOfCustomers = () => {
+  return customer;
+};
+
+const setRawDataOfCustomears = (arg) => {
+  customer = arg;
+};
+
 // 7.1-1
 const organization = new Organization({
   name: "애크미 구스베리",

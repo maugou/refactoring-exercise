@@ -8,7 +8,7 @@ class Person {
     return this._name;
   }
   get courses() {
-    return this._courses;
+    return this._courses.slice();
   }
 
   set courses(aList) {

@@ -10,23 +10,27 @@ class Person {
   get courses() {
     return this._courses;
   }
-  get courses(aList) {
-    this._courses = aList
+
+  set courses(aList) {
+    this._courses = aList.slice();
   }
 
   addCourse(aCourse) {
-    this._courses.push(aCourse)
+    this._courses.push(aCourse);
   }
 
-  removeCourse(aCourse, fnIfAbsent = () => {
-    throw new RangeError()
-  }) {
+  removeCourse(
+    aCourse,
+    fnIfAbsent = () => {
+      throw new RangeError();
+    }
+  ) {
     const index = this.courses.indexOf(aCourse);
 
-    if (index === -1) { 
-      fnIfAbsent()
+    if (index === -1) {
+      fnIfAbsent();
     } else {
-      this._courses.splice(index, 1)
+      this._courses.splice(index, 1);
     }
   }
 }
@@ -38,9 +42,9 @@ class Courses {
   }
 
   get name() {
-    return this._name
+    return this._name;
   }
   get isAdvanced() {
-    return this._isAdvanced
+    return this._isAdvanced;
   }
 }

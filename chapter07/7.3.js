@@ -3,7 +3,7 @@ class Order {
     this._priority = data.priority;
   }
 
-  get priority() {
+  get priorityString() {
     return this._priority.toString();
   }
 

@@ -1,18 +1,8 @@
 class Shipment {
   get trackingInfo() {
-    return this._trackingInformation.display;
+    return `${this.shippingCompany}: ${this.trackingNumber}`;
   }
 
-  get trackingInformation() {
-    return this._trackingInformation;
-  }
-  set trackingInformation(aTrackingInformation) {
-    this._trackingInformation = aTrackingInformation;
-  }
-}
-
-/* Shipment class 의 일부처럼 사용 */
-class TrackingInformation {
   get shippingCompany() {
     return this._shippingCompany;
   }
@@ -25,9 +15,5 @@ class TrackingInformation {
   }
   set trackingNumber(arg) {
     this._trackingNumber = arg;
-  }
-
-  get display() {
-    return `${this.shippingCompany}: ${this.trackingNumber}`;
   }
 }

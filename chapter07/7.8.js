@@ -1,3 +1,6 @@
+/**
+ * 7.7 위임 숨기기의 반대 행위
+ */
 class Person {
   constructor(name) {
     this._name = name;
@@ -7,12 +10,12 @@ class Person {
     return this._name;
   }
 
-  set department(arg) {
-    this._department = arg;
+  get department() {
+    return this._department;
   }
 
-  get manager() {
-    return this._department.manager;
+  set department(arg) {
+    this._department = arg;
   }
 }
 

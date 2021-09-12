@@ -25,5 +25,14 @@ class Customer {
 class CustomerContract {
   constructor(startDate) {
     this._startDate = startDate;
+    this._discountRate = dicountRate;
+  }
+
+  get discountRate() {
+    return this._discountRate;
+  }
+
+  set discountRate(arg) {
+    this._discountRate = arg;
   }
 }

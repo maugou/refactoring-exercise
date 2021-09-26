@@ -3,16 +3,13 @@ const renderPerson = (outStream, person) => {
 
   result.push(`<p>${person.name}</p>`);
   result.push(renderPhoto(person.photo));
-  result.push(`<p>제목: ${person.photo.title}</p>`);
-  result.push(emitPhotoData(person.photo));
+  result.push(zznew(person.photo));
 
   return result.join("\n");
 };
 
 const photoDiv = (p) => {
-  return ["<div>", `<p>제목: ${p.title}</p>`, emitPhotoData(p), "</div>"].join(
-    "\n"
-  );
+  return ["<div>", zznew(p), "</div>"].join("\n");
 };
 
 const emitPhotoData = (aPhoto) => {
@@ -22,4 +19,8 @@ const emitPhotoData = (aPhoto) => {
   result.push(`<p>날짜: ${aPhoto.date.toDateString()}</p>`);
 
   return result.join("\n");
+};
+
+const zznew = (p) => {
+  return [`<p>제목: ${p.title}</p>`, emitPhotoData(p)].join("\n");
 };

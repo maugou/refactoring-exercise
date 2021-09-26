@@ -22,5 +22,9 @@ const emitPhotoData = (aPhoto) => {
 };
 
 const zznew = (p) => {
-  return [`<p>제목: ${p.title}</p>`, emitPhotoData(p)].join("\n");
+  return [
+    `<p>제목: ${p.title}</p>`,
+    `<p>위치: ${aPhoto.location}</p>`,
+    `<p>날짜: ${aPhoto.date.toDateString()}</p>`,
+  ].join("\n");
 };

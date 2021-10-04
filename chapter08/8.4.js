@@ -1,0 +1,22 @@
+const renderPerson = (outStream, person) => {
+  outStream.write(`<p>${person.name}</p>\n`);
+  renderPhoto(outStream, person.photo);
+  emitPhotoData(outStream, photo);
+  outStream.write(`<p>위치: ${photo.location}</p>\n`);
+};
+
+const listRecentPhotos = (outStream, photos) => {
+  photos
+    .filter((p) => p.date > recentDateCutoff())
+    .forEach((p) => {
+      outStream.write("<div>\n");
+      emitPhotoData(outStream, photo);
+      outStream.write(`<p>위치: ${photo.location}</p>\n`);
+      outStream.write("</div>\n");
+    });
+};
+
+const emitPhotoData = (outStream, photo) => {
+  outStream.write(`<p>제목: ${photo.title}</p>\n`);
+  outStream.write(`<p>날짜: ${photo.date.toDateString()}</p>\n`);
+};

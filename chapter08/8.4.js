@@ -1,7 +1,7 @@
 const renderPerson = (outStream, person) => {
   outStream.write(`<p>${person.name}</p>\n`);
   renderPhoto(outStream, person.photo);
-  zztmp(outStream, photo);
+  emitPhotoData(outStream, photo);
   outStream.write(`<p>위치: ${photo.location}</p>\n`);
 };
 
@@ -10,13 +10,13 @@ const listRecentPhotos = (outStream, photos) => {
     .filter((p) => p.date > recentDateCutoff())
     .forEach((p) => {
       outStream.write("<div>\n");
-      zztmp(outStream, photo);
+      emitPhotoData(outStream, photo);
       outStream.write(`<p>위치: ${photo.location}</p>\n`);
       outStream.write("</div>\n");
     });
 };
 
-const zztmp = (outStream, photo) => {
+const emitPhotoData = (outStream, photo) => {
   outStream.write(`<p>제목: ${photo.title}</p>\n`);
   outStream.write(`<p>날짜: ${photo.date.toDateString()}</p>\n`);
 };

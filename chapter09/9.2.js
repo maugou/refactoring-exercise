@@ -1,0 +1,1 @@
+const organization = { name: "애크미 구스케리", country: "GB" };

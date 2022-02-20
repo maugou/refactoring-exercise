@@ -1,6 +1,6 @@
 class Organization {
   constructor(date) {
-    this._title = date.name;
+    this._title = data.title !== undefined ? data.title : date.name;
     this._country = data.country;
   }
 

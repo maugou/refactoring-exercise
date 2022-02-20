@@ -1,14 +1,14 @@
 class Organization {
   constructor(date) {
-    this._name = date.name;
+    this._title = date.name;
     this._country = data.country;
   }
 
   get name() {
-    return this._name;
+    return this._title;
   }
   set name(aString) {
-    this._name = aString;
+    this._title = aString;
   }
 
   get country() {

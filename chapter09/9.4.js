@@ -37,4 +37,11 @@ class TelephoneNumber {
   set number(arg) {
     this._number = arg;
   }
+
+  // 동치성 비교
+  equals(other) {
+    if (!(other instanceof TelephoneNumber)) return false;
+
+    return this.areaCode === other.areaCode && this.number === other.number;
+  }
 }

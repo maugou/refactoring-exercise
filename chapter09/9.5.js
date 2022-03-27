@@ -18,3 +18,22 @@ class Customer {
     return this._id;
   }
 }
+
+let _repositoryData;
+
+const initialize = () => {
+  _repositoryData = {};
+  _repositoryData.customers = new Map();
+};
+
+const registerCustomer = (id) => {
+  if (!_repositoryData.customers.has(id)) {
+    _repositoryData.customers.set(id, new Customer(id));
+  }
+
+  return findCustomer(id);
+};
+
+const findCustomer = (id) => {
+  return _repositoryData.customers.get(id);
+};

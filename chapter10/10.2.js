@@ -5,10 +5,8 @@ const disabilityAmount = (anEmployee) => {
   }
 
   // and
-  if (anEmployee.onVacaion) {
-    if (anEmployee.seniority > 10) {
-      return 1;
-    }
+  if (anEmployee.onVacaion && anEmployee.seniority > 10) {
+    return 1;
   }
 
   return 0.5;

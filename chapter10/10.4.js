@@ -59,35 +59,25 @@ class Rating {
       result += 1;
     }
 
-    if (voyage.zone === "중국" && hasChina(history)) {
-      result += 3;
-
-      if (history.length > 10) {
-        result += 1;
-      }
-
-      if (voyage.length > 12) {
-        result += 1;
-      }
-
-      if (voyage.length > 18) {
-        result -= 1;
-      }
-    } else {
-      if (history.length > 8) {
-        result += 1;
-      }
-
-      if (voyage.length > 14) {
-        result -= 1;
-      }
-    }
-
     return result;
   }
 
   get hasChina() {
     return history.some((v) => "중국" === v.zone);
+  }
+
+  get voyageAndHistoryLengthFactor() {
+    let result = 0;
+
+    if (history.length > 8) {
+      result += 1;
+    }
+
+    if (voyage.length > 14) {
+      result -= 1;
+    }
+
+    return result;
   }
 }
 
@@ -96,6 +86,26 @@ class ExperiencedChinaRating extends Rating {
     const result = super.captainHistoryRisk - 2;
 
     return Math.max(result, 0);
+  }
+
+  get voyageAndHistoryLengthFactor() {
+    let result = 0;
+
+    result += 3;
+
+    if (history.length > 10) {
+      result += 1;
+    }
+
+    if (voyage.length > 12) {
+      result += 1;
+    }
+
+    if (voyage.length > 18) {
+      result -= 1;
+    }
+
+    return result;
   }
 }
 

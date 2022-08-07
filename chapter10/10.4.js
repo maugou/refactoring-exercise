@@ -65,18 +65,8 @@ class Rating {
     return result;
   }
 
-  get hasChina() {
-    return history.some((v) => "중국" === v.zone);
-  }
-
   get voyageLengthFactor() {
-    let result = 0;
-
-    if (voyage.length > 14) {
-      result -= 1;
-    }
-
-    return result;
+    return voyage.length > 14 ? -1 : 0;
   }
 
   get historyLengthFactor() {
@@ -91,10 +81,12 @@ class ExperiencedChinaRating extends Rating {
     return Math.max(result, 0);
   }
 
+  get voyageProfitFactor() {
+    return super.voyageProfitFactor + 3;
+  }
+
   get voyageLengthFactor() {
     let result = 0;
-
-    result += 3;
 
     if (voyage.length > 12) {
       result += 1;

@@ -1,5 +1,5 @@
 const rating = (voyage, history) => {
-  return new Rating(voyage, history);
+  return createRating(voyage, history).value;
 };
 
 class Rating {
@@ -46,10 +46,6 @@ class Rating {
 
     result += history.filter((v) => v.profit < 0).length;
 
-    if (voyage.zone === "중국" && hasChina(history)) {
-      result -= 2;
-    }
-
     return Math.max(result, 0);
   }
 
@@ -95,7 +91,13 @@ class Rating {
   }
 }
 
-class ExperiencedChinaRating extends Rating {}
+class ExperiencedChinaRating extends Rating {
+  get captainHistoryRisk() {
+    const result = super.captainHistoryRisk - 2;
+
+    return Math.max(result, 0);
+  }
+}
 
 const createRating = (voyage, history) => {
   if (voyage.zone === "중국" && history.some((v) => "중국" === v.zone)) {

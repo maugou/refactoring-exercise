@@ -95,6 +95,16 @@ class Rating {
   }
 }
 
+class ExperiencedChinaRating extends Rating {}
+
+const createRating = (voyage, history) => {
+  if (voyage.zone === "중국" && history.some((v) => "중국" === v.zone)) {
+    return new ExperiencedChinaRating(voyage, history);
+  } else {
+    return new Rating(voyage, history);
+  }
+};
+
 /* 호출 코드 */
 const voyage = { zone: "서인도", length: 10 };
 const history = [

@@ -59,6 +59,9 @@ class Rating {
       result += 1;
     }
 
+    result += this.historyLengthFactor;
+    result += this.voyageLengthFactor;
+
     return result;
   }
 
@@ -66,18 +69,18 @@ class Rating {
     return history.some((v) => "중국" === v.zone);
   }
 
-  get voyageAndHistoryLengthFactor() {
+  get voyageLengthFactor() {
     let result = 0;
-
-    if (history.length > 8) {
-      result += 1;
-    }
 
     if (voyage.length > 14) {
       result -= 1;
     }
 
     return result;
+  }
+
+  get historyLengthFactor() {
+    return history.length > 8 ? 1 : 0;
   }
 }
 
@@ -88,14 +91,10 @@ class ExperiencedChinaRating extends Rating {
     return Math.max(result, 0);
   }
 
-  get voyageAndHistoryLengthFactor() {
+  get voyageLengthFactor() {
     let result = 0;
 
     result += 3;
-
-    if (history.length > 10) {
-      result += 1;
-    }
 
     if (voyage.length > 12) {
       result += 1;
@@ -106,6 +105,10 @@ class ExperiencedChinaRating extends Rating {
     }
 
     return result;
+  }
+
+  get historyLengthFactor() {
+    return history.length > 10 ? 1 : 0;
   }
 }
 

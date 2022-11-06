@@ -14,11 +14,20 @@ class Customer {
   }
 
   set billingPlan(arg) {
-    // ... 
+    // ...
   }
 
   get paymentHistory() {
     // ...
   }
+
+  get isUnknown() {
+    return false;
+  }
 }
 
+class UnknownCustomer {
+  get isUnknown() {
+    return true;
+  }
+}

@@ -34,7 +34,7 @@ class UnknownCustomer {
 
 // 미확인 고객 확인하는 모든 곳에서는 아래 함수 호출(함수 추출 사용)
 const isUnknown = (arg) => {
-  if (!((arg instanceof Customer) || (arg === "미확인 고객")))
+  if (!(arg instanceof Customer || arg instanceof UnknownCustomer))
     throw new Error(`잘못된 값과 비교: <${arg}>`);
-  return (arg === "미확인 고객")
-}
+  return arg.isUnknown;
+};

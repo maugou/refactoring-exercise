@@ -22,9 +22,15 @@ const thePlan = new HeatingPlan();
 
 // 호출자
 const handleHeating = () => {
-  if (thePlan.targetTemperature > thermostat.currentTemperature) {
+  if (
+    thePlan.xxNEWtargetTemperature(thermostat.selectedTemperature) >
+    thermostat.currentTemperature
+  ) {
     setToHeat();
-  } else if (thePlan.targetTemperature < thermostat.currentTemperature) {
+  } else if (
+    thePlan.xxNEWtargetTemperature(thermostat.selectedTemperature) <
+    thermostat.currentTemperature
+  ) {
     setToCool();
   } else {
     setOff();

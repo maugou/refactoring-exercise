@@ -4,9 +4,7 @@ const thermostat = {
 
 class HeatingPlan {
   get targetTemperature() {
-    const selectedTemperature = thermostat.selectedTemperature;
-
-    return this.xxNEWtargetTemperature(selectedTemperature);
+    return this.xxNEWtargetTemperature(thermostat.selectedTemperature);
   }
 
   xxNEWtargetTemperature(selectedTemperature) {

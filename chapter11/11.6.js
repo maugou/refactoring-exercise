@@ -3,11 +3,7 @@ const thermostat = {
 };
 
 class HeatingPlan {
-  get targetTemperature() {
-    return this.xxNEWtargetTemperature(thermostat.selectedTemperature);
-  }
-
-  xxNEWtargetTemperature(selectedTemperature) {
+  targetTemperature(selectedTemperature) {
     if (selectedTemperature > this._max) {
       return this._max;
     } else if (selectedTemperature < this._min) {
@@ -23,12 +19,12 @@ const thePlan = new HeatingPlan();
 // 호출자
 const handleHeating = () => {
   if (
-    thePlan.xxNEWtargetTemperature(thermostat.selectedTemperature) >
+    thePlan.targetTemperature(thermostat.selectedTemperature) >
     thermostat.currentTemperature
   ) {
     setToHeat();
   } else if (
-    thePlan.xxNEWtargetTemperature(thermostat.selectedTemperature) <
+    thePlan.targetTemperature(thermostat.selectedTemperature) <
     thermostat.currentTemperature
   ) {
     setToCool();

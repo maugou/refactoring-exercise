@@ -14,10 +14,6 @@ class Person {
   get id() {
     return this._id;
   }
-
-  set id(arg) {
-    this._id = arg;
-  }
 }
 
 const martin = new Person("1234");

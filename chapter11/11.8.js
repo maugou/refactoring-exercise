@@ -28,6 +28,5 @@ function createEmployee(name, typeCode) {
 
 // 호출자 내 class 사용 (축약)
 
-const leadEngineer = new Employee(document.leadEngineer, "E");
-
-const candidate = new Employee(document.name, document.empType);
+const leadEngineer = createEmployee(document.leadEngineer, "E");
+const candidate = createEmployee(document.name, document.empType);
